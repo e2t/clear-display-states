@@ -25,14 +25,10 @@ Sub Run(isOneColor As Boolean)
     Dim part As PartDoc
     Dim i As Variant
     Dim materials As Collection 'of MaterialValue
-    Dim confs(0) As String
     Dim currentConf As String
     
     Set part = currentDoc
     Set materials = New Collection
-    
-    Dim vs As MaterialVisualPropertiesData
-    Set vs = part.GetMaterialVisualProperties
     
     currentConf = currentDoc.ConfigurationManager.ActiveConfiguration.Name
     
@@ -44,13 +40,11 @@ Sub Run(isOneColor As Boolean)
         Next
     End If
     
-    part.RemoveAllDisplayStates  ' Material erased after this
+    part.RemoveAllDisplayStates
     currentDoc.Extension.LinkedDisplayState = Not isOneColor
     For Each i In materials
         currentDoc.ShowConfiguration2 i.toConf
         part.SetMaterialPropertyName2 i.toConf, i.DataBase, i.Material
-        confs(0) = i.toConf
-        part.SetMaterialVisualProperties vs, swSpecifyConfiguration, confs
     Next
     currentDoc.ShowConfiguration2 currentConf
 End Sub
