@@ -1,4 +1,6 @@
-﻿# ClearDisplayStates
+This project has been moved to https://codeberg.org/e2t/clear-display-states
+ 
+ # ClearDisplayStates
 Макрос для очистки состояний отображения в деталях SolidWorks.
 
 ### Зависимости
